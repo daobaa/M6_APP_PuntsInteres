@@ -1,0 +1,38 @@
+/* Basic Margin Config */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, sans-serif;
+}
+
+/* General */
+
+/* Left Info Part */
+.main-info{
+height: 100vh;
+}
+.body-info{
+    background-color: #FADADD;
+    position: relative;
+    min-height: 100px;
+    padding: 10px;
+}
+.body-info::before{
+    content: "No hay información para mostrar";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #888;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+}
+.body-info:not(:empty)::before{
+    display: none;
+}
+
+/* Right Map Part */
