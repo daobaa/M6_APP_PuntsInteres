@@ -13,6 +13,7 @@ body{
 /* Left Info Part */
 .main-info{
     height: 100vh;
+    background-color: #BFC1C2;
 }
 .body-info{
     background-color: #FADADD;
@@ -35,6 +36,21 @@ body{
 }
 .body-info:not(:empty)::before{
     display: none;
+}
+
+#attach-files{
+    width: max-content;
+    height: 100px;
+    border: 2px dashed #888;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #888;
+}
+#attach-files.hover{
+    background-color: #f0f0f0;
 }
 
 /* Right Map Part */
