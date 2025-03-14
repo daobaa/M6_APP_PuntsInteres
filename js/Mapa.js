@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    console.log("map started to load");
+    class Mapa {
+        #map;
+
+
+    }
+
     const map = L.map('map').setView([0, 0], 2);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
