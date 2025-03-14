@@ -3,38 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/index.css">
-    <script src="../js/drag&drop.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="  crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="../css/index.css"/>
+    <script src="../js/drag&drop.js" defer></script>
+    <script src="../js/map.js" defer></script>
     <title>Punts d'Interés</title>
 </head>
 <body>
-    <div class="main-info">
-        <div class="upper-filter">
-            <label for="typeMenu">Tipus:</label>
-            <select id="typeMenu">
-            </select>
-
-            <label for="orderChoose">Ordenació:</label>
-            <select id="orderChoose">
-                <option value="option1">Ascendent</option>
-                <option value="option2">Descendent</option>
-            </select>
-
-            <input type="text" placeholder="Filtrar per nom...">
-        </div>
-
-        <div class="body-info"></div>
-
-        <div class="footer-import">
-            <p>Numero total: </p>
-            <p></p>
-            <button type="button" id="buttClean">Vaciar lista</button>
-            <div id="attach-files">
-                Arrastra un fitxer CSV per carregar la informació
+    <div class="whole">
+        <div class="main-info">
+            <div class="upper-filter">
+                <label for="typeMenu">Tipus:</label>
+                <select id="typeMenu">
+                </select>
+    
+                <label for="orderChoose">Ordenació:</label>
+                <select id="orderChoose">
+                    <option value="option1">Ascendent</option>
+                    <option value="option2">Descendent</option>
+                </select>
+    
+                <input type="text" placeholder="Filtrar per nom...">
+            </div>
+    
+            <div class="body-info"></div>
+    
+            <div class="footer-import">
+                <p>Numero total: </p>
+                <p></p>
+                <button type="button" id="buttClean">Vaciar lista</button>
+                <div id="attach-files">
+                    Arrastra un fitxer CSV per carregar la informació
+                </div>
             </div>
         </div>
-    </div>
-    <div class="map-content">
+        <div class="map-content">
+            <div id="map"></div>
+        </div>
     </div>
 </body>
 </html>

@@ -9,10 +9,15 @@ body{
 }
 
 /* General */
+.whole{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
 
 /* Left Info Part */
 .main-info{
-    height: 100vh;
+    flex: 3;
     background-color: #BFC1C2;
 }
 .body-info{
@@ -54,3 +59,10 @@ body{
 }
 
 /* Right Map Part */
+.map-content{
+    flex: 7;
+    background-color: lightcoral;
+}
+#map{
+    height: 100vh;
+}
