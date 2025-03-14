@@ -12,24 +12,26 @@ body{
 
 /* Left Info Part */
 .main-info{
-height: 100vh;
+    height: 100vh;
 }
 .body-info{
     background-color: #FADADD;
     position: relative;
     min-height: 100px;
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .body-info::before{
     content: "No hay información para mostrar";
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    color: #888;
+    transform: translate(-50%, -50%);
+    color: black;
     font-size: 16px;
     text-align: center;
-    display: block;
 }
 .body-info:not(:empty)::before{
     display: none;
