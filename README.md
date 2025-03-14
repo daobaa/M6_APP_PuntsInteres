@@ -1,0 +1,1 @@
+# M6_APP_PuntsInteres
