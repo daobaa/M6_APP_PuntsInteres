@@ -17,7 +17,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const files = e.dataTransfer.files;
 
         if(files[0].name.endsWith(".csv")){
-            console.log(files[0].name);
+            const reader = new FileReader();
+            reader.onload = function(event){
+                const fileContent = event.target.result;
+                console.log(fileContent);
+            };
+            reader.readAsText(files[0]);
         } else{
             alert("El fitxer no és csv");
         }
