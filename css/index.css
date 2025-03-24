@@ -20,10 +20,14 @@ body{
     flex: 3;
     background-color: #BFC1C2;
 }
+.upper-filter{
+    background-color: #EEC1BE;
+    height: 50px;
+}
 .body-info{
     background-color: #FADADD;
     position: relative;
-    min-height: 100px;
+    min-height: 500px;
     padding: 10px;
     display: flex;
     justify-content: center;
