@@ -20,7 +20,27 @@ document.addEventListener("DOMContentLoaded", function() {
             const reader = new FileReader();
             reader.onload = function(event){
                 const fileContent = event.target.result;
-                console.log(fileContent);
+                
+                const rows = fileContent.split('\n');
+                const data = rows.map(row => row.split(','));
+
+                let espai;
+                let atraccio;
+                let museu;
+
+                for(i = 0; i < data.length; i++){
+                    rowFull = data[i];
+                    if(data[i][3] == "Espai"){
+                        espai = rowFull;
+                        console.log(espai);
+                    } else if(data[i][3] == "Atraccio"){
+                        atraccio = rowFull;
+                        console.log(atraccio);
+                    } else if(data[i][3] == "Museu"){
+                        museu = rowFull;
+                        console.log(museu);
+                    }
+                }
             };
             reader.readAsText(files[0]);
         } else{
