@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const rows = fileContent.split('\n');
                 const data = rows.map(row => row.split(','));
 
+                const TypeSet = new Set();
                 let espai;
                 let atraccio;
                 let museu;
@@ -39,10 +40,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     let rowFull = data[i];
                     if(data[i][3] == "Espai"){
                         espai = rowFull;
+                        TypeSet.add(data[i][3]);
                     } else if(data[i][3] == "Atraccio"){
                         atraccio = rowFull;
+                        TypeSet.add(data[i][3]);
                     } else if(data[i][3] == "Museu"){
                         museu = rowFull;
+                        TypeSet.add(data[i][3]);
                     }
                 }
 
