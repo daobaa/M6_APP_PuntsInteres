@@ -51,14 +51,14 @@ function createPuntInteres(row) {
 }
 
 document.addEventListener('dataReady', function(event){
-    const { espai, atraccio, museu } = event.detail;
+    const { espai } = event.detail;
 
     console.log('Espai:', espai);
     if(espai){
         const punt = createPuntInteres(espai);
-        console.log(punt.id);
-        console.log(punt.nom);
-        console.log(punt.latitud);
+        // console.log(punt.id);
+        // console.log(punt.nom);
+        // console.log(punt.latitud);
     } else{
         console.error('No espai data available');
     }
