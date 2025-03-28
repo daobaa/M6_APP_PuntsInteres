@@ -62,4 +62,4 @@ document.addEventListener('dataReady', function(event){
     } else{
         console.error('No espai data available');
     }
-})
+});
