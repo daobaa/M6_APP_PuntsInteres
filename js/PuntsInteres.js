@@ -1,6 +1,6 @@
 import { espai } from './drag&drop.js';
 
-class PuntInteres {
+export class PuntInteres {
     #id;
     #esManual;
     pais;
