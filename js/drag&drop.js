@@ -1,7 +1,3 @@
-export let espai;
-export let atraccio;
-export let museu;
-
 document.addEventListener("DOMContentLoaded", function() {
     const dropArea = document.getElementById('attach-files');
 
@@ -36,13 +32,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     let rowFull = data[i];
                     if(data[i][3] == "Espai"){
                         espai = rowFull;
-                        console.log(espai);
                     } else if(data[i][3] == "Atraccio"){
                         atraccio = rowFull;
-                        console.log(atraccio);
                     } else if(data[i][3] == "Museu"){
                         museu = rowFull;
-                        console.log(museu);
                     }
                 }
 
