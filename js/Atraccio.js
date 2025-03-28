@@ -1,4 +1,3 @@
-import { atraccio } from './drag&drop.js';
 import { PuntInteres } from './PuntsInteres.js';
 
 class Atraccio extends PuntInteres{
