@@ -35,7 +35,7 @@ class PuntInteres {
         
     }
 }
-function createPuntInteresFromCSV(row) {
+function createPuntInteres(row) {
     const punt = new PuntInteres(row[0], row[3]);
 
     punt.pais = row[0];
@@ -55,7 +55,7 @@ document.addEventListener('dataReady', function(event){
 
     console.log('Espai:', espai);
     if(espai){
-        const punt = createPuntInteresFromCSV(espai);
+        const punt = createPuntInteres(espai);
         console.log(punt.id);
         console.log(punt.nom);
         console.log(punt.latitud);
