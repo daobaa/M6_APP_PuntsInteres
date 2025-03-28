@@ -1,5 +1,3 @@
-import { espai } from './drag&drop.js';
-
 export class PuntInteres {
     #id;
     #esManual;
