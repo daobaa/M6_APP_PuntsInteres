@@ -10,22 +10,34 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(this.#map);
 
-            if(navigator.geolocation){
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        const { latitude, longitude } = position.coords;
-                        this.#map.setView([latitude, longitude], 13);
-                        L.marker([latitude, longitude])
-                            .addTo(this.#map)
-                            .bindPopup("Estás aquí")
-                            .openPopup();
-                    },
-                    (error) => {
-                        console.error("Error obteniendo la ubicación: ", error);
-                    }
-                );
+            const storedCoordinates = localStorage.getItem('userCoordinates');  // Use 'userCoordinates' here
+            if(storedCoordinates){
+                const { latitude, longitude } = JSON.parse(storedCoordinates);
+                this.#map.setView([latitude, longitude], 13);
+                L.marker([latitude, longitude])
+                    .addTo(this.#map)
+                    .bindPopup("Estás aquí")
+                    .openPopup();
             } else{
-                alert("La geolocalización no está soportada en tu navegador");
+                if(navigator.geolocation){
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            const { latitude, longitude } = position.coords;
+                            this.#map.setView([latitude, longitude], 13);
+                            L.marker([latitude, longitude])
+                                .addTo(this.#map)
+                                .bindPopup("Estás aquí")
+                                .openPopup();
+                        
+                            localStorage.setItem('userCoordinates', JSON.stringify({ latitude, longitude }));  // Use 'userCoordinates' here too
+                        },
+                        (error) => {
+                            console.error("Error obteniendo la ubicación: ", error);
+                        }
+                    );
+                } else{
+                    alert("La geolocalización no está soportada en tu navegador");
+                }
             }
         }
     }
