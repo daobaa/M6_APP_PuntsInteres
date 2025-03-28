@@ -1,3 +1,5 @@
+import { espai } from './drag&drop.js';
+
 class PuntInteres {
     #id;
     #esManual;
@@ -33,3 +35,31 @@ class PuntInteres {
         
     }
 }
+function createPuntInteresFromCSV(row) {
+    const punt = new PuntInteres(row[0], row[3]);
+
+    punt.pais = row[0];
+    punt.ciutat = row[2];
+    punt.nom = row[4];
+    punt.direccio = row[5].trim();
+    punt.tipus = row[3];
+    punt.latitud = parseFloat(row[7]);
+    punt.longitud = parseFloat(row[8]);
+    punt.puntuacio = parseFloat(row[11]);
+
+    return punt;
+}
+
+document.addEventListener('dataReady', function(event){
+    const { espai, atraccio, museu } = event.detail;
+
+    console.log('Espai:', espai);
+    if(espai){
+        const punt = createPuntInteresFromCSV(espai);
+        console.log(punt.id);
+        console.log(punt.nom);
+        console.log(punt.latitud);
+    } else{
+        console.error('No espai data available');
+    }
+})

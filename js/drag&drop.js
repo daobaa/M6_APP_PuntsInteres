@@ -1,3 +1,7 @@
+export let espai;
+export let atraccio;
+export let museu;
+
 document.addEventListener("DOMContentLoaded", function() {
     const dropArea = document.getElementById('attach-files');
 
@@ -28,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 let atraccio;
                 let museu;
 
-                for(i = 0; i < data.length; i++){
-                    rowFull = data[i];
+                for(let i = 0; i < data.length; i++){
+                    let rowFull = data[i];
                     if(data[i][3] == "Espai"){
                         espai = rowFull;
                         console.log(espai);
@@ -41,6 +45,11 @@ document.addEventListener("DOMContentLoaded", function() {
                         console.log(museu);
                     }
                 }
+
+                const dataReadyEvent = new CustomEvent('dataReady', {
+                    detail: { espai, atraccio, museu }
+                });
+                document.dispatchEvent(dataReadyEvent);
             };
             reader.readAsText(files[0]);
         } else{
