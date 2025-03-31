@@ -2,7 +2,7 @@ export const TypeSet = new Set();
 
 document.addEventListener("DOMContentLoaded", function() {
     const dropArea = document.getElementById('attach-files');
-    dropArea.addEventListener('drop', (e) => {
+    dropArea.addEventListener('drop', async (e) => {
         e.preventDefault();
         dropArea.classList.remove('hover');
     
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
         if(files[0].name.endsWith(".csv")){
             const reader = new FileReader();
-            reader.onload = function(event){
+            reader.onload = async function(event){
                 const fileContent = event.target.result;
                 
                 const rows = fileContent.split('\n');
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 let atraccio;
                 let museu;
     
-                for(let i = 0; i < data.length; i++){
+                for(let i = 1; i < data.length; i++){
                     let rowFull = data[i];
                     if(data[i][3] == "Espai"){
                         espai = rowFull;
@@ -31,6 +31,21 @@ document.addEventListener("DOMContentLoaded", function() {
                     } else if(data[i][3] == "Museu"){
                         museu = rowFull;
                         TypeSet.add(data[i][3]);
+                    }
+
+                    let COUNTRY_CODE = data[i][1];
+                    if(!COUNTRY_CODE) continue;
+                    let COUNTRIES_API = `https://restcountries.com/v3.1/alpha/${COUNTRY_CODE}`;
+                    
+                    try{
+                        let response = await fetch(COUNTRIES_API);
+                        if(!response.ok) throw new Error(`Error en API: ${response.status}`);
+
+                        let dataPais = await response.json();
+                        console.log(`País:`, dataPais[0].name.common);
+                        console.log(`Bandera:`, dataPais[0].flags.png);
+                    } catch(error){
+                        console.error(`Error con ${COUNTRY_CODE}`, error);
                     }
                 }
     
