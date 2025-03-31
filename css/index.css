@@ -17,6 +17,8 @@ body{
 
 /* Left Info Part */
 .main-info{
+    display: flex;
+    flex-direction: column;
     flex: 3;
     background-color: #BFC1C2;
 }
@@ -49,7 +51,7 @@ body{
 
 #attach-files{
     width: max-content;
-    height: 100px;
+    height: 75px;
     border: 2px dashed #888;
     border-radius: 10px;
     display: flex;
