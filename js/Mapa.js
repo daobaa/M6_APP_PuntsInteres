@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(this.#map);
 
-            const storedCoordinates = localStorage.getItem('userCoordinates');  // Use 'userCoordinates' here
+            const storedCoordinates = localStorage.getItem('userCoordinates');
             if(storedCoordinates){
                 const { latitude, longitude } = JSON.parse(storedCoordinates);
                 this.#map.setView([latitude, longitude], 13);
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                                 .bindPopup("Estás aquí")
                                 .openPopup();
                         
-                            localStorage.setItem('userCoordinates', JSON.stringify({ latitude, longitude }));  // Use 'userCoordinates' here too
+                            localStorage.setItem('userCoordinates', JSON.stringify({ latitude, longitude }));
                         },
                         (error) => {
                             console.error("Error obteniendo la ubicación: ", error);
