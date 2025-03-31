@@ -1,3 +1,5 @@
+export const TypeSet = new Set();
+
 document.addEventListener("DOMContentLoaded", function() {
     const dropArea = document.getElementById('attach-files');
 
@@ -31,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 const rows = fileContent.split('\n');
                 const data = rows.map(row => row.split(','));
 
-                const TypeSet = new Set();
                 let espai;
                 let atraccio;
                 let museu;
