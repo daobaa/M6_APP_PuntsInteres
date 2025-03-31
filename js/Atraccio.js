@@ -5,32 +5,29 @@ class Atraccio extends PuntInteres{
     preu;
     moneda;
 
+    constructor(row){
+        super(row);
+        this.horaris = row[9];
+        this.preu = row[10];
+        this.moneda = row[11];
+    }
     get preuIva() {
         return 
     }
-}
-function createAtraccio(row) {
-    const punt = new Atraccio(row[0], row[3]);
-
-    punt.horaris = row[7];
-    punt.preu = row[9];
-    punt.moneda = row[12];
-
-    return punt;
 }
 document.addEventListener('dataReady', function(event){
     const { atraccio } = event.detail;
 
     console.log('Atraccio:', atraccio);
     if(atraccio){
-        const punt = createAtraccio(atraccio);
-        // console.log(punt.horaris);
-        // console.log(punt.preu);
-        // console.log(punt.moneda);
+        const punt = new Atraccio(atraccio);
+        console.log(`Latitud:`, punt.latitud);
+        console.log(`Longitud:`, punt.longitud);
+
     } else{
         console.error('No espai data available');
     }
-})
+});
 const IVARates = [
     { pais: "Spain", iva: 21 },
     { pais: "Germany", iva: 19 },
