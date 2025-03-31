@@ -11,9 +11,15 @@ export class PuntInteres {
     puntuacio;
     static totalTasques;
 
-    constructor(id, esManual) {
-        this.#id = id;
-        this.#esManual = esManual;
+    constructor(row) {
+        this.pais = row[0];
+        this.ciutat = row[2];
+        this.nom = row[4];
+        this.direccio = row[5];
+        this.tipus = row[3];
+        this.latitud = parseFloat(row[6]);
+        this.longitud = parseFloat(row[7]);
+        this.puntuacio = parseFloat(row[11]);
     }
 
     get id() {
@@ -33,30 +39,15 @@ export class PuntInteres {
         
     }
 }
-function createPuntInteres(row) {
-    const punt = new PuntInteres(row[0], row[3]);
-
-    punt.pais = row[0];
-    punt.ciutat = row[2];
-    punt.nom = row[4];
-    punt.direccio = row[5].trim();
-    punt.tipus = row[3];
-    punt.latitud = parseFloat(row[7]);
-    punt.longitud = parseFloat(row[8]);
-    punt.puntuacio = parseFloat(row[11]);
-
-    return punt;
-}
 
 document.addEventListener('dataReady', function(event){
     const { espai } = event.detail;
 
     console.log('Espai:', espai);
     if(espai){
-        const punt = createPuntInteres(espai);
-        // console.log(punt.id);
-        // console.log(punt.nom);
-        // console.log(punt.latitud);
+        const punt = new PuntInteres(espai);
+        console.log(`Latitud:`, punt.latitud);
+        console.log(`Longitud:`, punt.longitud);
     } else{
         console.error('No espai data available');
     }
