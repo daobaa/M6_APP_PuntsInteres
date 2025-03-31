@@ -1,4 +1,4 @@
-import { TypeSet } from "./drag&drop.js";
+import { TypeSet } from "./Read&Do.js";
 
 document.addEventListener("dataReady", function() {
     const SelOptions = document.getElementById("typeMenu");
