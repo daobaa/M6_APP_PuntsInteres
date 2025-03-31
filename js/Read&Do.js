@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         TypeSet.add(data[i][3]);
                     }
 
+                    /* MALA PRAXIS | SEPARAR FUNCION ASINCRONA DE LECTURA DE ARCHIVO */
+
                     let COUNTRY_CODE = data[i][1];
                     if(!COUNTRY_CODE) continue;
                     let COUNTRIES_API = `https://restcountries.com/v3.1/alpha/${COUNTRY_CODE}`;
