@@ -62,3 +62,33 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+// /* Testing */
+// document.addEventListener("DOMContentLoaded", function(){
+//     function ReadCSV(){
+//         return new Promise((resolve, reject) => {
+//             const dropArea = document.getElementById("attach-files");
+//             dropArea.addEventListener('drop', async (e) =>{
+//                 e.preventDefault();
+//                 dropArea.classList.remove('hover');
+
+//                 const files = e.dataTransfer.files;
+//                 if(files.length > 0 && files[0].name.endsWith(".csv")){
+//                     const reader = new FileReader();
+//                     reader.onload = function(event){
+//                         const fileContent = event.target.result;
+//                         const rows = fileContent.split('\n');
+//                         const data = rows.map(row => row.split(','));
+//                         resolve(data);
+//                     };
+//                     reader.onerror = function(){
+//                         reject("Error reading the file");
+//                     };
+//                     reader.readAsText(files[0]);
+//                 } else{
+//                     reject("CSV invalid or not CSV at all!");
+//                 }
+//             });
+//         });
+//     }
+//     window.ReadCSV = ReadCSV;
+// });
