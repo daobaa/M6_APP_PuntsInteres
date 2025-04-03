@@ -7,12 +7,12 @@ class Atraccio extends PuntInteres{
 
     constructor(row){
         super(row);
-        this.horaris = row[9];
-        this.preu = row[10];
-        this.moneda = row[11];
+        this.horaris = row[8];
+        this.preu = row[9];
+        this.moneda = row[12];
     }
     get preuIva() {
-        return 
+        return
     }
 }
 document.addEventListener('dataReady', function(event){
@@ -24,19 +24,21 @@ document.addEventListener('dataReady', function(event){
         console.log(`Latitud:`, punt.latitud);
         console.log(`Longitud:`, punt.longitud);
 
+        const bodyInfo = document.querySelector('.body-info');
+        const card = document.createElement('div');
+        card.classList.add('info-card');
+
+        card.innerHTML = `
+            <h3><strong>${punt.nom}</strong></h3>
+            <p>${punt.ciutat}</p>
+            <p>Tipus: ${punt.tipus}</p>
+            <p>Horaris: ${punt.horaris}</p>
+            <p>Preu: ${punt.preu}${punt.moneda}</p>
+        `;
+        
+        bodyInfo.appendChild(card);
+
     } else{
         console.error('No espai data available');
     }
 });
-const IVARates = [
-    { pais: "Spain", iva: 21 },
-    { pais: "Germany", iva: 19 },
-    { pais: "France", iva: 20 },
-    { pais: "Italy", iva: 22 },
-    { pais: "United Kingdom", iva: 20 },
-    { pais: "Netherlands", iva: 21 },
-    { pais: "Sweden", iva: 25 },
-    { pais: "Belgium", iva: 21 },
-    { pais: "Portugal", iva: 23 },
-    { pais: "Poland", iva: 23 }
-];

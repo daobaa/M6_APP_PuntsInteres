@@ -63,6 +63,35 @@ body{
 #attach-files.hover{
     background-color: #f0f0f0;
 }
+.current-country img{
+    width: 20px;
+    height: auto;
+    vertical-align: middle;
+}
+.info-card {
+    background: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.info-card h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+.info-card p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+.body-info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.body-info .info-card{
+    width: 350px;
+    margin: 0;
+}
 
 /* Right Map Part */
 .map-content{

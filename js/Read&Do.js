@@ -44,8 +44,11 @@ document.addEventListener("DOMContentLoaded", function() {
                         if(!response.ok) throw new Error(`Error en API: ${response.status}`);
 
                         let dataPais = await response.json();
-                        console.log(`País:`, dataPais[0].name.common);
-                        console.log(`Bandera:`, dataPais[0].flags.png);
+                        let countryName = dataPais[0].name.common;
+                        let flagUrl = dataPais[0].flags.png;
+
+                        let countryElement = document.querySelector('.current-country');
+                        countryElement.innerHTML = `País (<img src="${flagUrl}" alt="Bandera de ${countryName}"> ${countryName})`;
                     } catch(error){
                         console.error(`Error con ${COUNTRY_CODE}`, error);
                     }

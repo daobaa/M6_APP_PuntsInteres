@@ -48,6 +48,18 @@ document.addEventListener('dataReady', function(event){
         const punt = new PuntInteres(espai);
         console.log(`Latitud:`, punt.latitud);
         console.log(`Longitud:`, punt.longitud);
+
+        const bodyInfo = document.querySelector('.body-info');
+        const card = document.createElement('div');
+        card.classList.add('info-card');
+
+        card.innerHTML = `
+            <h3><strong>${punt.nom}</strong></h3>
+            <p>${punt.ciutat}</p>
+            <p>Tipus: ${punt.tipus}</p>
+        `;
+
+        bodyInfo.appendChild(card);
     } else{
         console.error('No espai data available');
     }
