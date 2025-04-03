@@ -39,8 +39,35 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     alert("La geolocalización no está soportada en tu navegador");
                 }
             }
+            document.addEventListener('dataReady', (event) =>{
+                const { espai, atraccio, museu } = event.detail;
+                
+                console.log('Espai:', espai);
+                console.log('Atraccio:', atraccio);
+                console.log('Museu:', museu);
+
+
+                this.agregarMarcadores(espai);
+                this.agregarMarcadores(atraccio);
+                this.agregarMarcadores(museu);
+            });
+        }
+    
+        agregarMarcadores(data){
+            if(!data) return;
+
+            data.forEach((punto) => {
+                let lat = parseFloat(punto.latitud);
+                let lng = parseFloat(punto.longitud);
+
+                if(lat && lng){
+                    L.marker([lat, lng])
+                        .addTo(this.#map)
+                        .bindPopup(`Punto: ${punto.nom}`)
+                        .openPopup();
+                }
+            });
         }
     }
-
     const mapa = new Mapa();
 });
