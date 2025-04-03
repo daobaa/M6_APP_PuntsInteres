@@ -18,7 +18,6 @@ class Museu extends PuntInteres{
 document.addEventListener('dataReady', function(event){
     const { museu } = event.detail;
 
-    console.log('Museu:', museu);
     if(museu){
         const punt = new Museu(museu);
         console.log(`Latitud:`, punt.latitud);
@@ -43,7 +42,7 @@ document.addEventListener('dataReady', function(event){
             <p>Horaris: ${punt.horaris}</p>
             <p>Preu: ${punt.preu}${punt.moneda}</p>
         `;
-        
+
         card.appendChild(deleteButton);
         bodyInfo.appendChild(card);
 

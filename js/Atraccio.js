@@ -11,14 +11,15 @@ class Atraccio extends PuntInteres{
         this.preu = row[9];
         this.moneda = row[12];
     }
+
     get preuIva() {
         return
     }
 }
+
 document.addEventListener('dataReady', function(event){
     const { atraccio } = event.detail;
 
-    console.log('Atraccio:', atraccio);
     if(atraccio){
         const punt = new Atraccio(atraccio);
         console.log(`Latitud:`, punt.latitud);
@@ -28,6 +29,14 @@ document.addEventListener('dataReady', function(event){
         const card = document.createElement('div');
         card.classList.add('info-card');
 
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Eliminar';
+        deleteButton.classList.add('delete-btn');
+
+        deleteButton.addEventListener('click', function() {
+            card.remove();
+        });
+
         card.innerHTML = `
             <h3><strong>${punt.nom}</strong></h3>
             <p>${punt.ciutat}</p>
@@ -35,10 +44,10 @@ document.addEventListener('dataReady', function(event){
             <p>Horaris: ${punt.horaris}</p>
             <p>Preu: ${punt.preu}${punt.moneda}</p>
         `;
-        
-        bodyInfo.appendChild(card);
 
+        card.appendChild(deleteButton);
+        bodyInfo.appendChild(card);
     } else{
-        console.error('No espai data available');
+        console.error('No atraccio data available');
     }
 });

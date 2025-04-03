@@ -43,7 +43,6 @@ export class PuntInteres {
 document.addEventListener('dataReady', function(event){
     const { espai } = event.detail;
 
-    console.log('Espai:', espai);
     if(espai){
         const punt = new PuntInteres(espai);
         console.log(`Latitud:`, punt.latitud);
@@ -53,12 +52,21 @@ document.addEventListener('dataReady', function(event){
         const card = document.createElement('div');
         card.classList.add('info-card');
 
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Eliminar';
+        deleteButton.classList.add('delete-btn');
+
+        deleteButton.addEventListener('click', function() {
+            card.remove(); // Elimina la tarjeta del DOM
+        });
+
         card.innerHTML = `
             <h3><strong>${punt.nom}</strong></h3>
             <p>${punt.ciutat}</p>
             <p>Tipus: ${punt.tipus}</p>
         `;
 
+        card.appendChild(deleteButton);
         bodyInfo.appendChild(card);
     } else{
         console.error('No espai data available');
