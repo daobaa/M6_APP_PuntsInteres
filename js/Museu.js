@@ -28,15 +28,23 @@ document.addEventListener('dataReady', function(event){
         const card = document.createElement('div');
         card.classList.add('info-card');
 
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Eliminar';
+        deleteButton.classList.add('delete-btn');
+
+        deleteButton.addEventListener('click', function() {
+            card.remove();
+        });
+
         card.innerHTML = `
             <h3><strong>${punt.nom}</strong></h3>
             <p>${punt.ciutat}</p>
             <p>Tipus: ${punt.tipus}</p>
             <p>Horaris: ${punt.horaris}</p>
             <p>Preu: ${punt.preu}${punt.moneda}</p>
-            <p>Descripció: ${punt.descripcio}</p>
         `;
         
+        card.appendChild(deleteButton);
         bodyInfo.appendChild(card);
 
     } else{
