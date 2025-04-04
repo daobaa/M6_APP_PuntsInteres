@@ -27,7 +27,7 @@ document.addEventListener('dataReady', function(event){
 
         const bodyInfo = document.querySelector('.body-info');
         const card = document.createElement('div');
-        card.classList.add('info-card');
+        card.classList.add('info-card', 'atraccio');
 
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Eliminar';

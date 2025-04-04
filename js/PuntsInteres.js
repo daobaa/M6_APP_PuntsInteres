@@ -50,14 +50,14 @@ document.addEventListener('dataReady', function(event){
 
         const bodyInfo = document.querySelector('.body-info');
         const card = document.createElement('div');
-        card.classList.add('info-card');
+        card.classList.add('info-card', 'espai');
 
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Eliminar';
         deleteButton.classList.add('delete-btn');
 
         deleteButton.addEventListener('click', function() {
-            card.remove(); // Elimina la tarjeta del DOM
+            card.remove();
         });
 
         card.innerHTML = `
