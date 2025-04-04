@@ -46,10 +46,31 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 console.log('Atraccio:', atraccio);
                 console.log('Museu:', museu);
 
+                const bloquesEspai = this.dividirEnBloques(espai,14);
+                const bloquesAtraccio = this.dividirEnBloques(atraccio,14);
+                const bloquesMuseu = this.dividirEnBloques(museu,14);
 
-                this.agregarMarcadores(espai);
-                this.agregarMarcadores(atraccio);
-                this.agregarMarcadores(museu);
+                this.agregarMarcadores(bloquesEspai.map(p =>({
+                    latitud: p[6],
+                    longitud: p[7],
+                    nom: p[4],
+                    direccio: p[5],
+                    puntuacio: p[11]
+                })));
+                this.agregarMarcadores(bloquesAtraccio.map(p =>({
+                    latitud: p[6],
+                    longitud: p[7],
+                    nom: p[4],
+                    direccio: p[5],
+                    puntuacio: p[11]
+                })));
+                this.agregarMarcadores(bloquesMuseu.map(p =>({
+                    latitud: p[6],
+                    longitud: p[7],
+                    nom: p[4],
+                    direccio: p[5],
+                    puntuacio: p[11]
+                })));
             });
         }
     
@@ -63,10 +84,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 if(lat && lng){
                     L.marker([lat, lng])
                         .addTo(this.#map)
-                        .bindPopup(`Punto: ${punto.nom}`)
+                        .bindPopup(`
+                            <strong><h3>${punto.nom}</h3></strong><br>
+                            <strong>${punto.direccio}</strong><br>
+                            <strong>Puntuació: ${punto.puntuacio}</strong>
+                        `)
                         .openPopup();
                 }
             });
+        }
+
+        dividirEnBloques(array, tamaño){
+            const bloques = [];
+            for(let i = 0; i < array.length; i += tamaño){
+                bloques.push(array.slice(i, i + tamaño));
+            }
+            return bloques;
         }
     }
     const mapa = new Mapa();
