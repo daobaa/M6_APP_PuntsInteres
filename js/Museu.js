@@ -1,3 +1,4 @@
+import { addCard, removeCard } from './cardsManage.js';
 import { PuntInteres } from './PuntsInteres.js';
 
 class Museu extends PuntInteres{
@@ -20,12 +21,11 @@ document.addEventListener('dataReady', function(event){
 
     if(museu){
         const punt = new Museu(museu);
-        console.log(`Latitud:`, punt.latitud);
-        console.log(`Longitud:`, punt.longitud);
 
         const bodyInfo = document.querySelector('.body-info');
         const card = document.createElement('div');
         card.classList.add('info-card', 'museu');
+        card.setAttribute('data-name', punt.nom);
 
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Eliminar';
@@ -33,6 +33,7 @@ document.addEventListener('dataReady', function(event){
 
         deleteButton.addEventListener('click', function() {
             card.remove();
+            removeCard(card);
         });
 
         card.innerHTML = `
@@ -45,6 +46,7 @@ document.addEventListener('dataReady', function(event){
 
         card.appendChild(deleteButton);
         bodyInfo.appendChild(card);
+        addCard(card);
 
     } else{
         console.error('No museu data available');
