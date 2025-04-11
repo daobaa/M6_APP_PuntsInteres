@@ -76,20 +76,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
         agregarMarcadores(data){
             if(!data) return;
+            let markers = [];
 
             data.forEach((punto) => {
                 let lat = parseFloat(punto.latitud);
                 let lng = parseFloat(punto.longitud);
 
                 if(lat && lng){
-                    L.marker([lat, lng])
-                        .addTo(this.#map)
-                        .bindPopup(`
-                            <strong><h3>${punto.nom}</h3></strong><br>
-                            <strong>${punto.direccio}</strong><br>
-                            <strong>Puntuació: ${punto.puntuacio}</strong>
-                        `)
-                        .openPopup();
+                    let marker = L.marker([lat, lng])
+                                    .addTo(this.#map)
+                                    .bindPopup(`
+                                        <strong><h3>${punto.nom}</h3></strong><br>
+                                        <strong>${punto.direccio}</strong><br>
+                                        <strong>Puntuació: ${punto.puntuacio}</strong>
+                                    `)
+                                    .openPopup();
+                    markers.push(marker);
                 }
             });
         }
